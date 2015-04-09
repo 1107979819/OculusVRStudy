@@ -1,7 +1,7 @@
 /************************************************************************************
 
 Filename    :   App.cpp
-Content     :   Native counterpart to VrActivity
+Content     :   Native counterpart to VrActivity±æª˙”ÎVrActivity
 Created     :   September 30, 2013
 Authors     :   John Carmack
 
