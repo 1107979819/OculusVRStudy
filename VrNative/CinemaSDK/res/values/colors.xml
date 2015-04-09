@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="backgroundTint">#CC000000</color>
+    <color name="light_gray_header_color">#646663</color>
+    <color name="seek_timer_current">#005ddb</color>
+    <color name="seek_timer_select">#2f4659</color>
+    <color name="white">#ffffff</color>
+    <color name="seek_background_inactive">#88FFFFFF</color>
+    <color name="seek_background_active">#B4FFFFFF</color>
+</resources>

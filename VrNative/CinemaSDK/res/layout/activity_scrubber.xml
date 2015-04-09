@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AbsoluteLayout2"
+    android:layout_width="960px"
+    android:layout_height="540px">
+
+    <RelativeLayout
+        android:id="@+id/full_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1" >
+    
+	    <RelativeLayout
+	        android:id="@+id/movieTitle_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="85px"
+	        android:layout_marginTop="97px"
+	        android:layout_weight="1"
+	        android:layout_y="23px" >
+	
+	        <TextView
+	            android:id="@+id/movieTitle"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:layout_weight="0"
+	            android:layout_x="401px"
+	            android:layout_y="75px"
+	            android:background="@color/backgroundTint"
+	            android:gravity="center"
+	            android:paddingBottom="8px"
+	            android:paddingLeft="22px"
+	            android:paddingRight="22px"
+	            android:paddingTop="8px"
+	            android:text="Dracula"
+	            android:textColor="#ffffff"
+	            android:textSize="7sp"
+	            android:textStyle="bold" />
+	    </RelativeLayout>
+	    
+	    <RelativeLayout
+	        android:id="@+id/seek_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="200px"
+	        android:layout_centerInParent="true"
+	        android:layout_x="199px"
+	        android:gravity="center" >
+	
+	        <ImageView
+	            android:id="@+id/seek_speed"
+	            android:layout_width="100px"
+	            android:layout_height="100px"
+	            android:layout_centerVertical="true"
+	            android:scaleType="fitCenter"
+	            android:src="@drawable/img_seek_ff2x"
+	            android:visibility="visible" />
+
+	    </RelativeLayout>
+
+	    <RelativeLayout
+	        android:id="@+id/transport_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="false"
+	        android:layout_marginBottom="84px"
+	        android:layout_weight="1" >
+
+	        <RelativeLayout
+	            android:id="@+id/playbackControls"
+	            android:layout_width="448px"
+	            android:layout_height="84px"
+	            android:layout_centerHorizontal="true"
+	            android:background="@color/backgroundTint"
+	            android:visibility="visible" >
+
+	            <ImageButton
+	                android:id="@+id/btnRewind"
+	                android:layout_width="66px"
+	                android:layout_height="61px"
+	                android:layout_alignParentLeft="true"
+	                android:layout_centerVertical="true"
+	                android:layout_weight="1"
+	                android:layout_marginLeft="-10px"
+	                android:layout_marginRight="-10px"
+	                android:background="@null"
+	                android:scaleType="fitCenter"
+	                android:src="@drawable/img_btn_rw" />
+	            
+	            <ImageButton
+	                android:id="@+id/btnPause"
+	                android:layout_width="66px"
+	                android:layout_height="70px"
+	                android:layout_alignParentLeft="false"
+	                android:layout_centerVertical="true"
+	                android:layout_marginLeft="-10px"
+	                android:layout_marginRight="-10px"
+	                android:layout_weight="1"
+	                android:background="@null"
+	                android:scaleType="fitCenter"
+	                android:layout_toRightOf="@+id/btnRewind"
+	                android:src="@drawable/btn_pause" />
+
+	            <ImageButton
+	                android:id="@+id/btnFastForward"
+	                android:layout_width="66px"
+	                android:layout_height="61px"
+	                android:layout_alignParentLeft="false"
+	                android:layout_centerVertical="true"
+	                android:layout_weight="1"
+	                android:layout_marginLeft="-10px"
+	                android:layout_marginRight="-10px"
+	                android:background="@null"
+	                android:scaleType="fitCenter"
+	                android:layout_toRightOf="@+id/btnPause"
+	                android:src="@drawable/img_btn_ff" />
+	            
+	            <RelativeLayout
+	                android:id="@+id/movieProgressBarBackground"
+	                android:layout_width="232px"
+	                android:layout_height="20px"
+	                android:layout_centerHorizontal="false"
+	                android:layout_centerVertical="true"
+	                android:layout_marginRight="8px"
+	                android:layout_toRightOf="@+id/btnFastForward"
+	                android:layout_weight="1"
+	                android:background="@color/seek_background_inactive"
+	                android:paddingBottom="3px"
+	                android:paddingLeft="3px"
+	                android:paddingRight="3px"
+	                android:paddingTop="3px" >
+
+	                <SeekBar
+	                    android:id="@+id/movieProgressBar"
+	                    android:layout_width="222px"
+	                    android:layout_height="20px"
+	                    android:layout_centerHorizontal="true"
+	                    android:layout_centerInParent="true"
+	                    android:layout_centerVertical="true"
+	                    android:layout_weight="1"
+	                    android:paddingLeft="0px"
+	                    android:paddingRight="0px"
+	                    android:progress="100"
+	                    android:progressDrawable="@drawable/seekbar_progress"
+	                    android:scrollbars="horizontal"
+	                    android:thumb="@drawable/seek_handler" />
+
+	            </RelativeLayout>
+	            
+	            <ImageButton
+	                android:id="@+id/btnPlaylist"
+	                android:layout_width="78px"
+	                android:layout_height="70px"
+	                android:layout_alignParentRight="true"
+	                android:layout_centerVertical="true"
+	                android:layout_weight="1"
+	                android:background="@null"
+	                android:scaleType="centerCrop"
+	                android:src="@drawable/btn_playlist" />
+	            	            
+	        </RelativeLayout>
+	    </RelativeLayout>
+	</RelativeLayout>		
+
+    <TextView
+        android:id="@+id/seekTimeCurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="284px"
+        android:layout_y="366px"
+        android:background="@drawable/img_seek_current"
+        android:gravity="center_horizontal"
+        android:paddingLeft="0px"
+        android:paddingRight="0px"
+        android:paddingTop="1px"
+        android:text="2:23:19"
+        android:textColor="@color/white"
+        android:textSize="5sp" />
+
+    <TextView
+        android:id="@+id/seekTimeSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="580px"
+        android:layout_y="366px"
+        android:background="@drawable/img_seek_select"
+        android:gravity="center_horizontal"
+        android:paddingLeft="0px"
+        android:paddingRight="0px"
+        android:paddingTop="1px"
+        android:text="2:23:19"
+        android:textSize="5sp"
+        android:textColor="@color/white" />
+
+</AbsoluteLayout>
