@@ -33,12 +33,15 @@ Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
 // so individual components are not tied to our native application
 // framework, and can more easily be reused by Unity or other
 // hosting applications.
+//尽可能避免包括该头文件在VrLib,
+//因此单个组件与我们本机的程序的框架不相关联
+//可以更加容易被Unity和其他本地程序重用
 
 namespace OVR
 {
 
 //==============================================================
-// forward declarations
+// forward declarations前面声明
 class EyeBuffers;
 struct MaterialParms;
 class GlGeometry;
@@ -58,6 +61,8 @@ class OvrStoragePaths;
 // All of these virtual interfaces will be called by the VR application thread.
 // Applications that don't care about particular interfaces are not
 // required to implement them.
+// 所有这些虚拟接口将被VR应用的线程调用
+// 应用不必要关心部分接口不被实现
 class VrAppInterface
 {
 public:
@@ -68,47 +73,67 @@ public:
 	// we may reuse a single C++ object for them to make repeated
 	// opening of the platformUI faster, and to not require full
 	// cleanup on destruction.
+	// 每个在java中的onCreate将会分配一个新的java对象，
+	// 但是我们可以重用一个C++对象给他们，加快重新打开的运行速度,和不要求在销毁时完全清除
+
 	jlong SetActivity( JNIEnv * jni, jclass clazz, jobject activity );
 
 	// All subclasses communicate with App through this member.
+	// 所有子类通过该成员与APP通讯
 	App *	app;				// Allocated in the first call to SetActivity()
+								//在第一次调用SetActivity()的时候分配
 	jclass	ActivityClass;		// global reference to clazz passed to SetActivity
 
-	// This will be called one time only, before SetActivity()
-	// returns from the first creation.
+	// This will be called one time only,
+	// before SetActivity() returns from the first creation.
+	//	这仅被调用一次，在SetActivity()从第一次创建返回前
 	//
 	// It is called from the VR thread with an OpenGL context current.
+	//	它随着当前OpenGL内容被VR线程调用
 	//
-	// If the app was launched without a specific intent, launchIntent
-	// will be an empty string.
+	// If the app was launched without a specific intent,
+	//	launchIntent will be an empty string.
+	// 如果app被加载时没有特定的intent，launchIntent将是一空字符串
+
 	virtual void OneTimeInit( const char * launchIntent );
 
 	// This will be called one time only, when the app is about to shut down.
-	//
+	//	这仅被调用一次，在app将要关闭的时候
+候
 	// It is called from the VR thread before the OpenGL context is destroyed.
-	//
+	//	它将在OpenGL内容销毁前被VR线程调用
+
 	// If the app needs to free OpenGL resources this is the place to do so.
+	//	如果APP需要释放OpenGL的资源，这里是添加释放代码的地方
+
 	virtual void OneTimeShutdown();
 
 	// Frame will only be called if the window surfaces have been created.
-	//
+	//	Frame 只会在window surfaces已经被创建的时候调用
+
 	// The application should call DrawEyeViewsPostDistorted() to get
 	// the DrawEyeView() callbacks.
-	//
+	//	应用应该调用DrawEyeViewsPostDistorted()去获取DrawEyeView()回调函数
+
 	// Any GPU operations that are relevant for both eye views, like
 	// buffer updates or dynamic texture rendering, should be done first.
-	//
+	//	一些两眼视图相关的GPU操作，如 buffer更新或动态纹理渲染，应该首先被处理
+
 	// Return the view matrix the framework should use for positioning
 	// new pop up dialogs.
+	//	返回视图矩阵， 框架应该用来定位新弹出的对话框
 	virtual Matrix4f Frame( VrFrame vrFrame );
 
 	// Called by DrawEyeViewsPostDisorted().
-	//
-	// The color buffer will have already been cleared or discarded, as
-	// appropriate for the GPU.
-	//
+	//	由DrawEyeViewsPostDisorted()调用
+
+	// The color buffer will have already been cleared or discarded,
+	// as appropriate for the GPU.
+	//	颜色buffer将会被清除或者丢弃
+
 	// The viewport and scissor will already be set.
-	//
+	//	视窗和剪刀将已经被设置
+
 	// Return the MVP matrix for the framework to use for drawing the
 	// pass through camera, pop up dialog, and debug graphics.
 	//
